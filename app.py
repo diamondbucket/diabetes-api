@@ -4,6 +4,7 @@ import torch.nn as nn
 import joblib
 import numpy as np
 import pandas as pd
+import os
 
 app = Flask(__name__)
 
@@ -121,4 +122,5 @@ def home():
     return "🔥 Diabetes Prediction API is running!"
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000)
+    port = int(os.environ.get("PORT", 5000))  # Gets port from Render
+    app.run(host='0.0.0.0', port=port)
